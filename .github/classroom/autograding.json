@@ -1,0 +1,185 @@
+{
+	"tests": [
+	{
+		"name": "Minimum Points",
+		"setup": "",
+		"run": "echo Minimum Points",
+		"input": "",
+		"output": "",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 50
+	},
+	{
+		"name": "Test 0",
+		"setup": "javac test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 0",
+		"input": "",
+		"output": "Test 0: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+	{
+		"name": "Test 1",
+		"setup": "javac  test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 1",
+		"input": "",
+		"output": "Test 1: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+	{
+		"name": "Test 2",
+		"setup": "javac  test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 2",
+		"input": "",
+		"output": "Test 2: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+	{
+		"name": "Test 3",
+		"setup": "javac  test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 3",
+		"input": "",
+		"output": "Test 3: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+        {
+		"name": "Test 4",
+		"setup": "javac  test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 4",
+		"input": "",
+		"output": "Test 4: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+        {
+		"name": "Test 5",
+		"setup": "javac  test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 5",
+		"input": "",
+		"output": "Test 5: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+        {
+		"name": "Test 6",
+		"setup": "javac  test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 6",
+		"input": "",
+		"output": "Test 6: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+        {
+		"name": "Test 7",
+		"setup": "javac  test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 7",
+		"input": "",
+		"output": "Test 7: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+        {
+		"name": "Test 8",
+		"setup": "javac  test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 8",
+		"input": "",
+		"output": "Test 8: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+        {
+		"name": "Test 9",
+		"setup": "javac  test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 9",
+		"input": "",
+		"output": "Test 9: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+        {
+		"name": "Test 10",
+		"setup": "javac test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 10",
+		"input": "",
+		"output": "Test 10: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+        {
+		"name": "Test 11",
+		"setup": "javac -cp .:test test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 11",
+		"input": "",
+		"output": "Test 11: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+        {
+		"name": "Test 12",
+		"setup": "javac  test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 12",
+		"input": "",
+		"output": "Test 12: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+        {
+		"name": "Test 13",
+		"setup": "javac  test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 13",
+		"input": "",
+		"output": "Test 13: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+        {
+		"name": "Test 14",
+		"setup": "javac test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests 14",
+		"input": "",
+		"output": "Test 14: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+        {
+		"name": "Performance Check",
+		"setup": "javac test/MazeSolverHardCodedTests.java",
+		"run": "timeout 5 java test.MazeSolverHardCodedTests",
+		"input": "",
+		"output": "Computes Performance Test: PASS",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 2.5
+	},
+	{
+		"name": "Test SolveMazes",
+		"setup": "javac hw2/SolveMazes.java",
+		"run": "timeout 5 java hw2.SolveMazes",
+		"input": "mazes/maze-a.txt\r\nmazes/maze-b.txt\r\nmazes/maze-c.txt\r\nmazes/maze-d.txt\r\nstop",
+		"output": "75%",
+		"comparison": "included",
+		"timeout": 1,
+		"points": 10
+	}
+	
+	]
+}
