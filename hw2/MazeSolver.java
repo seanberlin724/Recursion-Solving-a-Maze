@@ -4,74 +4,121 @@ package hw2;
 import java.util.ArrayList;
 import java.util.*;
 
+import hw1.JaggedGridReader;
+
 public class MazeSolver {
-    private final char OPEN;
-    private final char BLOCKED;
-    private final char START;
-    private final char GOAL;
-    private final char MARKED;
-    private final char UNMARKED;
     private char[][] maze;
     private ArrayList<String> mazePath;
     private int numCellsVisited;
     private int mazesSolved;
     private int mazesTried;
 
-    public MazeSolver(char[][] maze) {
-        // intialize maze chars
-        OPEN = '.';
-        BLOCKED = '#';
-        START = 'S';
-        GOAL = 'G';
-        MARKED = '+';
-        UNMARKED = 'x';
-
-        // initialize other attributes
-        this.maze = maze;
-        this.mazePath = new ArrayList<>();
-        this.numCellsVisited = 0;
-        this.mazesSolved = 0;
-        this.mazesTried = 0;
-    }
+    private final char OPEN = '.';
+    private final char BLOCKED = '#';
+    private final char START = 'S';
+    private final char GOAL = 'G';
+    private final char MARKED = '+';
+    private final char UNMARKED = '#';
 
     public boolean solveMaze(char[][] maze) {
-        findPath(1, 1);
-        if (mazePath != null) {
-            mazesSolved++;
-            mazesTried++;
-            return true;
-        } else {
-            mazesTried++;
-            return false;
+
+        // initialize other attributes
+        int x = 0;
+        int y = 0;
+        this.mazePath = new ArrayList<String>();
+        this.numCellsVisited = 0;
+        this.maze = maze;
+
+        // Locate Start Position
+        for (int i = 0; i < maze.length; i++) {
+            for (int j = 0; j < maze[i].length; j++) {
+                if (maze[i][j] == START) {
+                    y = i;
+                    x = j;
+                    break;
+                }
+            }
         }
+
+        // Run Findpath and check whetehr or not it solves
+        mazesTried++;
+        if (findPath(x, y) == true) {
+            mazesSolved++;
+            return true;
+        }
+        mazePath = null;
+        return false;
     }
 
-    private boolean findPath(int x, int y) {
-        // Base cases
-        if (y < 0 || y >= maze.length || x < 0 || x >= maze[0].length) {
-            return false; // Cell (x,y) is outside the maze
-        }
-        if (maze[y][x] == GOAL) {
-            mazePath.add("(" + x + "," + y + ")");
-            return true; // Cell (x,y) is the goal
-        }
-        if (maze[y][x] != OPEN) {
-            return false; // Cell (x,y) is not open
-        }
-
-        // Recursive case
-        maze[y][x] = MARKED; // Mark cell (x,y) as part of the solution path
-        mazePath.add("(" + x + "," + y + ")"); // Add cell (x,y) to the solution path
+    public boolean findPath(int x, int y) {
         numCellsVisited++;
 
-        if (findPath(x, y - 1) || findPath(x + 1, y) || findPath(x, y + 1) || findPath(x - 1, y)) {
-            return true; // One of the recursive calls found the goal
+        // Base Case
+        // 1: if outside return false
+        if (x > maze[0].length - 1 || y > maze.length - 1 || x < 0 || y < 0) {
+            return false;
         }
+        // 2: if reaches goal return true
+        if (maze[y][x] == GOAL) {
+            return true;
+        }
+        // 3: if blocked return false
+        if (maze[y][x] == BLOCKED || maze[y][x] == MARKED || maze[y][x] == UNMARKED) {
+            return false;
+        }
+        // Mark position
+        maze[y][x] = MARKED;
 
-        // Backtracking
-        maze[y][x] = UNMARKED; // Unmark cell (x,y)
-        mazePath.remove(mazePath.size() - 1); // Remove cell (x,y) from the solution path
+        // Recursive Case
+
+        if (findPath(x, y - 1)) {
+            mazePath.add(0, "North");
+            return true;
+        }
+        if (findPath(x + 1, y)) {
+            mazePath.add(0, "East");
+            return true;
+        }
+        if (findPath(x, y + 1)) {
+            mazePath.add(0, "South");
+            return true;
+        }
+        if (findPath(x - 1, y)) {
+            mazePath.add(0, "West");
+            return true;
+        }
+        maze[y][x] = UNMARKED;
         return false;
+
+        /*
+         * // Base cases
+         * if (x < 0 || x >= maze.length || y < 0 || y >= maze[0].length) {
+         * return false; // Cell (x,y) is outside the maze
+         * }
+         * if (maze[x][y] == GOAL) {
+         * mazePath.add("(" + x + "," + y + ")");
+         * return true; // Cell (x,y) is the goal
+         * }
+         * if (maze[x][y] != OPEN) {
+         * return false; // Cell (x,y) is not open
+         * }
+         * 
+         * // Recursive case
+         * maze[x][y] = MARKED; // Mark cell (x,y) as part of the solution path
+         * mazePath.add("(" + x + "," + y + ")"); // Add cell (x,y) to the solution path
+         * numCellsVisited++;
+         * 
+         * if (findPath(x, y - 1) || findPath(x + 1, y) || findPath(x, y + 1) ||
+         * findPath(x - 1, y)) {
+         * return true; // One of the recursive calls found the goal
+         * }
+         * 
+         * // Backtracking
+         * maze[x][y] = UNMARKED; // Unmark cell (x,y)
+         * mazePath.remove(mazePath.size() - 1); // Remove cell (x,y) from the solution
+         * path
+         * return false;
+         */
     }
 
     public String[] getMoves() {
@@ -81,7 +128,12 @@ public class MazeSolver {
         }
 
         // return mazePath as an array
-        return mazePath.toArray(new String[mazePath.size()]);
+        // return mazePath.toArray(new String[mazePath.size()]);
+        String[] result = new String[mazePath.size()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = mazePath.get(i);
+        }
+        return result;
     }
 
     public int getNumCellsVisited() {
@@ -89,7 +141,7 @@ public class MazeSolver {
     }
 
     public double getPerformance() {
-        double performance = mazesSolved / mazesTried;
+        double performance = mazesSolved / (double) mazesTried;
         return performance;
     }
 }
